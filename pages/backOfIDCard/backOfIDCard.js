@@ -16,6 +16,30 @@ Page({
       show: false
     })
   },
+  //图片上传服务器
+  uploadPhoto: function () {  
+    var that = this  
+      //for (var i=0; i < this.data.src.length; i++) {  //多图片上传
+        wx.uploadFile({  
+          url: 'https:***/submit',  
+          filePath: that.data.src,  
+          name: 'frontSrc',  
+          //formData: adds, 
+          success: function (res) {  
+            console.log(res)  
+            if (res) {  
+              // wx.showToast({  
+              //   title: '已提交发布！',  
+              //   duration: 3000  
+              // });
+             const data = that.res.data;
+             that.setData({
+               src:data.src
+             });
+            }  
+          }
+        });
+  },
   // 点击拍照按钮
   takePhoto() {
     // 创建camera上下文CameraContext对象
@@ -48,6 +72,9 @@ Page({
   // 保存图片/更改主页数据(用户最终点击确定按钮√)
   saveImg() {
 
+    //图片上传服务器
+    //this.uploadPhoto();
+    
     // 获取所有页面(不懂请移步下面这篇文章)
     // https://blog.csdn.net/weixin_44198965/article/details/107821802
     let pages = getCurrentPages()

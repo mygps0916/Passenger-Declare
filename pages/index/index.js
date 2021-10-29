@@ -39,6 +39,17 @@ Page({
     imageSrc.push(this.backSrc);
     passenger.imageSrc = imageSrc;
     this.setData({passenger:passenger});
+    //网络请求
+    // wx.request({
+    //   url: 'example.php', //仅为示例，并非真实的接口地址
+    //   data: this.passenger,
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   success (res) {
+    //     console.log(res.data)
+    //   }
+    // });
   },
   formReset: function () {
     console.log('form发生了reset事件')
