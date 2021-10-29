@@ -1,0 +1,71 @@
+
+<view class="content">
+  <form class="page__bd" bindsubmit="formSubmit" bindreset="formReset">
+    <view class="section">
+      <text space="emsp" class="nameTitle">姓  名：</text>
+      <input class="input" name="passengerName" placeholder="请输入姓名" />
+    </view>
+    <view class="section section_gap">
+      <text space="emsp" class="sexTitle">性  别:</text>
+      <radio-group name="passengerSex" class="passengerSex">
+        <label><radio value="man" />男</label>
+        <label><radio value="woman" />女</label>
+      </radio-group>
+    </view>
+    <!--省市区选择器-->
+    <view class="section">
+      <text space="emsp" class="regionTitle">籍  贯：</text>
+      <picker mode="region" name="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker">
+          {{region[0]}}，{{region[1]}}，{{region[2]}}
+        </view>
+      </picker>
+    </view>
+    <!--end-->
+    <view class="section">
+      <text class="phoneTitle">联系电话：</text>
+      <input class="input" name="phone" placeholder="请输入手机号码" />
+    </view>
+    <view class="section section_gap">
+      <text class="idCardTitle">证件类型:</text>
+      <radio-group name="idcardType" class="idcardType">
+        <label><radio value="IdCard" />身份证</label>
+        <label><radio value="Passport" />护照</label>
+      </radio-group>
+    </view>
+    <view class="section">
+      <text class="IdCardNumTitle">证件号码：</text>
+      <input class="input" name="idcardNum" placeholder="请输入证件号码" />
+    </view>
+    <!-- 拍摄上传用户身份证 -->
+    <view class="IDCart_img_item">
+      <view class="item_idPhoto">
+        <view class="idPhoto" bindtap="goFront">
+          <!-- 初始未上传图片= -->
+          <view wx:if="{{ frontShow }}">
+            <image class="idPhoto_img" src="/assets/img/idcard_front.png"></image>
+            <view class="idPhoto_txt">点击拍摄身份证正面</view>
+          </view>
+          <!-- END -->
+          <!-- 用户拍照完显示预览的图片 -->
+          <image wx:if="{{ !frontShow }}" class="front" name="frontSrc" src="{{ frontSrc }}"></image>
+          <!-- END -->
+        </view>
+        <view class="idPhoto" bindtap="goBack">
+          <!-- 初始未上传图片= -->
+          <view wx:if="{{ backShow }}">
+            <image class="idPhoto_img" src="/assets/img/idcard_back.png"></image>
+            <view class="idPhoto_txt">点击拍摄身份证反面</view>
+          </view>
+          <!-- END -->
+          <!-- 用户拍照完显示预览的图片 -->
+          <image wx:if="{{ !backShow }}" class="front" name="backSrc" src="{{ backSrc }}"></image>
+          <!-- END -->
+        </view>
+      </view>
+    </view>
+    <view class="btn-area">
+      <button style="width: auto" type="primary" formType="submit">提交</button>
+    </view>
+  </form>
+</view>
