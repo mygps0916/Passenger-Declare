@@ -34,7 +34,10 @@ Page({
     passenger.phone = e.detail.value.phone;
     passenger.idcardType = e.detail.value.idcardType;
     passenger.idcardNum = e.detail.value.idcardNum;
-    passenger.imageSrc = [this.frontSrc,this.backSrc];
+    var imageSrc= [];
+    imageSrc.push(this.frontSrc);
+    imageSrc.push(this.backSrc);
+    passenger.imageSrc = imageSrc;
     this.setData({passenger:passenger});
   },
   formReset: function () {
@@ -48,13 +51,15 @@ Page({
    goFront: function() {
     wx.navigateTo({
 			url: '/pages/frontOfIDCard/frontOfIDCard',
-		})
+    });
+    console.log("goFront 正面拍照的路径：",this.frontSrc);
   },
   // 拍摄身份证反面-跳转到拍摄页
   goBack: function() {
     wx.navigateTo({
 			url: '/pages/backOfIDCard/backOfIDCard',
-		})
+    });
+    console.log("goBack 反面拍照的路径：",this.backSrc)
   },
   //省市区选择器：
   bindRegionChange: function (e) {
@@ -84,7 +89,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.frontSrc = wx.getStorageSync('frontSrc');
+    this.backSrc = wx.getStorageSync('backSrc');
   },
 
   /**

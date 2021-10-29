@@ -40,7 +40,7 @@
     <!-- 拍摄上传用户身份证 -->
     <view class="IDCart_img_item">
       <view class="item_idPhoto">
-        <view class="idPhoto" bindtap="goFront">
+        <view class="idPhoto" name="frontSrc" bindtap="goFront">
           <!-- 初始未上传图片= -->
           <view wx:if="{{ frontShow }}">
             <image class="idPhoto_img" src="/assets/img/idcard_front.png"></image>
@@ -48,10 +48,10 @@
           </view>
           <!-- END -->
           <!-- 用户拍照完显示预览的图片 -->
-          <image wx:if="{{ !frontShow }}" class="front" name="frontSrc" src="{{ frontSrc }}"></image>
+          <image wx:if="{{ !frontShow }}" class="front" src="{{ frontSrc }}"></image>
           <!-- END -->
         </view>
-        <view class="idPhoto" bindtap="goBack">
+        <view class="idPhoto" name="backSrc" bindtap="goBack">
           <!-- 初始未上传图片= -->
           <view wx:if="{{ backShow }}">
             <image class="idPhoto_img" src="/assets/img/idcard_back.png"></image>

@@ -41,7 +41,7 @@
     "compileType": "miniprogram",
     "libVersion": "2.19.4",
     "appid": "wx3935b3804e5a36a2",
-    "projectname": "Passenger_Declare",
+    "projectname": "Passenger-Declare",
     "debugOptions": {
         "hidedInDevtools": []
     },
